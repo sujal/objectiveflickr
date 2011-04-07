@@ -71,7 +71,7 @@
 		248AF9DB0FC82FCC00C22A56 /* BridgeSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BridgeSupport; sourceTree = "<group>"; };
 		6A681FE71009F1AB009224E7 /* LFSiteReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFSiteReachability.h; sourceTree = "<group>"; };
 		6A681FE81009F1AB009224E7 /* LFSiteReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFSiteReachability.m; sourceTree = "<group>"; };
-		6A8666490F9593B200325E1C /* ObjectiveFlickr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectiveFlickr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A8666490F9593B200325E1C /* ObjectiveFlickr */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = ObjectiveFlickr; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A86664A0F9593B200325E1C /* ObjectiveFlickr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ObjectiveFlickr-Info.plist"; sourceTree = "<group>"; };
 		6A8666A10F95955F00325E1C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
 		6ABF72E60F939BE600B9179E /* libObjectiveFlickr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjectiveFlickr.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				6ABF72E60F939BE600B9179E /* libObjectiveFlickr.a */,
-				6A8666490F9593B200325E1C /* ObjectiveFlickr.framework */,
+				6A8666490F9593B200325E1C /* ObjectiveFlickr */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			);
 			name = "ObjectiveFlickr (framework)";
 			productName = ObjectiveFlickr;
-			productReference = 6A8666490F9593B200325E1C /* ObjectiveFlickr.framework */;
+			productReference = 6A8666490F9593B200325E1C /* ObjectiveFlickr */;
 			productType = "com.apple.product-type.framework";
 		};
 		6ABF72E50F939BE600B9179E /* ObjectiveFlickr (library) */ = {
@@ -313,7 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -342,7 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -390,7 +390,7 @@
 		6ABF72D20F939BB800B9179E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -412,14 +412,18 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				VALID_ARCHS = "i386 ppc ppc7400 ppc970 x86_64";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "";
+				"VALID_ARCHS[sdk=iphoneos*]" = "armv7 armv6";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = i386;
+				"VALID_ARCHS[sdk=macosx10.6]" = "i386 x86_64";
 			};
 			name = Debug;
 		};
 		6ABF72D30F939BB800B9179E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -441,8 +445,10 @@
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				VALID_ARCHS = "ppc64 i386 ppc ppc7400 ppc970 x86_64";
-				"VALID_ARCHS[sdk=*]" = "ppc64 i386 ppc ppc7400 ppc970 x86_64";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "";
+				"VALID_ARCHS[sdk=iphoneos*]" = "armv7 armv6";
+				"VALID_ARCHS[sdk=iphonesimulator*]" = i386;
 				"VALID_ARCHS[sdk=macosx10.6]" = "i386 x86_64";
 			};
 			name = Release;
@@ -454,7 +460,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
 				PRODUCT_NAME = ObjectiveFlickr;
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -471,6 +477,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = ObjectiveFlickr;
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				"VALID_ARCHS[sdk=iphoneos*]" = "armv6 armv7";
 				ZERO_LINK = NO;
 			};
 			name = Release;
